@@ -4,7 +4,6 @@ window.addEventListener("load", function () {
   const container = document.querySelector(".container");
   container.innerHTML = searchBar();
   const searchButton = document.querySelector(".searchButton");
-
   searchProcess(searchButton, container);
 });
 
@@ -13,8 +12,17 @@ function searchProcess(searchButton, container) {
     const inputKeyword = document.querySelector(".inputKeyword");
     const weatherData = await getWeather(inputKeyword);
     container.innerHTML = displayWeather(weatherData);
+    updateIconBackground();
   });
 }
+
+// const quitBtn = document.querySelector(".displayWeather button");
+// quitBtn.addEventListener("click", function () {
+//   const container = document.querySelector(".container");
+//   const background = document.querySelector(".background img");
+//   container.innerHTML = searchBar();
+//   background.src = "./img/background.jpg";
+// });
 
 function getWeather(inputKeyword) {
   return fetch(apiKey + inputKeyword.value)
@@ -26,7 +34,6 @@ function getWeather(inputKeyword) {
       }
     })
     .then((response) => {
-      console.log(response);
       if (response.cod == 400) {
         const errorText = document.querySelector(".errorMassage .errorText");
         setTimeout(function () {
@@ -47,10 +54,12 @@ function getWeather(inputKeyword) {
 
 function displayWeather(weather) {
   return `<div class="displayWeather">
-  <button><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="quitBtn">
+  <i class="fa-solid fa-chevron-left quitBtn"></i>
+  </button>
   <div class="currentWeather">
     <img src="https://openweathermap.org/img/wn/${weather.weather.map((info) => info.icon)}.svg" />
-    <h2>${weather.weather.map((info) => info.main)}</h2>
+    <h2 class="weatherCondition">${weather.weather.map((info) => info.main)}</h2>
     <p>${weather.weather.map((info) => info.description)}</p>
   </div>
   <div class="line"></div>
@@ -101,8 +110,30 @@ function searchBar() {
 </div>`;
 }
 
-// weather condition : 4 + background
-// rain
-// clear
-// clouds
-// snow
+function updateIconBackground() {
+  let weatherCondition = document.querySelector(".weatherCondition").innerText;
+  const background = document.querySelector(".background img");
+  const icon = document.querySelector(".currentWeather img");
+  if (weatherCondition == "Clear") {
+    background.src = "./img/clear.jpg";
+    icon.src = "./img/clear.png";
+  }
+  if (weatherCondition == "Rain") {
+    background.src = "./img/rain.jpg";
+    icon.src = "./img/rain.png";
+  }
+  if (weatherCondition == "Clouds") {
+    background.src = "./img/clouds.jpg";
+    icon.src = "./img/clouds.png";
+  }
+  if (weatherCondition == "Snow") {
+    background.src = "./img/snow.jpg";
+    icon.src = "./img/snow.png";
+  }
+}
+
+document.addEventListener("click", function (element) {
+  if (element.target.classList.contains("quitBtn")) {
+    location.reload();
+  }
+});
