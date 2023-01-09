@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+  --main: #272631;
+  --dimmed: #c8c8c8;
+  --danger: #ff6262;
+}
+
+* {
+  font-family: Poppins;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.background img {
+  width: 100%;
+  height: 100vh;
+  filter: blur(2.5px);
+}
+
+.container {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.container .searchBar {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  width: 430px;
+  margin: 0 auto;
+  margin-top: 50px;
+  border-radius: 20px;
+  padding: 20px 30px;
+  background-color: white;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.6);
+}
+
+.container .searchBar .inputSearch {
+  display: flex;
+  width: 100%;
+}
+
+.container .searchBar .inputSearch .searchButton {
+  background-color: var(--main);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  height: 60px;
+  width: 80px;
+  border-radius: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.container .searchBar .inputSearch .inputKeyword {
+  display: flex;
+  padding: 10px 20px;
+  height: 40px;
+  width: 400px;
+  border-radius: 20px;
+  font-size: 18px;
+  border: none;
+}
+.container .searchBar .inputSearch .inputKeyword:focus {
+  outline: none;
+}
+
+.container .searchBar .errorMassage {
+  display: none;
+}
+.container .searchBar .errorMassage.show {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 55px;
+  margin-top: 25px;
+  background: rgba(241, 161, 161, 0.5);
+  border: 1.6px solid var(--danger);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.container .searchBar .errorMassage .errorText {
+  text-align: center;
+  color: var(--danger);
+  font-size: 18px;
+}
+
+.container .searchBar .errorMassage .quitError {
+  font-size: 25px;
+  color: var(--danger);
+  cursor: pointer;
+}
+
+.container .displayWeather {
+  width: 430px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 20px 40px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  margin-top: 50px;
+}
+
+.container .displayWeather button {
+  margin-top: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  font-size: 26px;
+  color: white;
+  background-color: var(--main);
+  border: none;
+  text-align: center;
+  line-height: 60px;
+}
+
+.container .displayWeather .line {
+  width: 100%;
+  height: 2px;
+  background-color: var(--dimmed);
+  opacity: 50%;
+}
+
+.container .displayWeather .currentWeather {
+  text-align: center;
+  color: var(--main);
+}
+
+.container .displayWeather .currentWeather img {
+  width: 200px;
+}
+
+.container .displayWeather .weatherInfo h2 {
+  margin-top: 30px;
+  font-size: 22px;
+  color: var(--main);
+}
+
+.container .displayWeather .weatherDetail {
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  color: var(--main);
+  margin-bottom: 50px;
+}
+
+.container .displayWeather .weatherDetail .wind {
+  border-right: 2px solid var(--dimmed);
+  border-left: 2px solid var(--dimmed);
+  padding: 0 20px;
+}
